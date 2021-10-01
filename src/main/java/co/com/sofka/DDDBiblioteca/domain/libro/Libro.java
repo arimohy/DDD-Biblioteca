@@ -20,7 +20,7 @@ public class Libro  extends AggregateEvent<LibroId> {
     protected Set<Tema> temas;
     protected Set<Ejemplar> ejemplares;
     protected Titulo titulo;
-    protected Año año;
+    protected Año anio;
 
     public Libro(LibroId entityId, Titulo titulo, Año año) {
         super(entityId);
@@ -65,9 +65,9 @@ public class Libro  extends AggregateEvent<LibroId> {
                 .findFirst();
     }
     public Optional<Ejemplar> getEjemplarPorId(EjemplarId entityId){
-        return ejemplar()
+        return ejemplares()
                 .stream()
-                .filter(tema->tema.identity().equals(entityId))
+                .filter(ejemplar->ejemplar.identity().equals(entityId))
                 .findFirst();
     }
 
@@ -79,7 +79,7 @@ public class Libro  extends AggregateEvent<LibroId> {
         return temas;
     }
 
-    public Set<Ejemplares> ejemplares() {
+    public Set<Ejemplar> ejemplares() {
         return ejemplares;
     }
 
@@ -88,6 +88,6 @@ public class Libro  extends AggregateEvent<LibroId> {
     }
 
     public Año año() {
-        return año;
+        return anio;
     }
 }

@@ -4,7 +4,7 @@ import co.com.sofka.DDDBiblioteca.domain.libro.events.AutorAgregado;
 import co.com.sofka.DDDBiblioteca.domain.libro.events.EjemplarAgregado;
 import co.com.sofka.DDDBiblioteca.domain.libro.events.LibroCreado;
 import co.com.sofka.DDDBiblioteca.domain.libro.events.TemaAgregado;
-import co.com.sofka.DDDBiblioteca.domain.libro.values.EjemplarId;
+
 
 import co.com.sofka.domain.generic.EventChange;
 
@@ -17,7 +17,8 @@ public class LibroChange extends EventChange {
             libro.temas=new HashSet<>();
             libro.ejemplares=new HashSet<>();
             libro.titulo=event.getTitulo();
-            libro.año=event.getAño();
+            libro.anio=event.getAño();
+
         });
         apply((TemaAgregado event)->{
             libro.temas.add(new Tema(
