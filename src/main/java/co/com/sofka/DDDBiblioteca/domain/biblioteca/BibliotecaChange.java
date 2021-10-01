@@ -1,19 +1,33 @@
 package co.com.sofka.DDDBiblioteca.domain.biblioteca;
 
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaCreada;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaFacultadAgregado;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecarioAgregado;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.HorarioAgregado;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.*;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecaFacultadId;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecarioId;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.HorarioId;
 import co.com.sofka.domain.generic.EventChange;
 
 public class BibliotecaChange extends EventChange {
     public BibliotecaChange(Biblioteca biblioteca) {
         apply((BibliotecaCreada event)->{
             biblioteca.estadoDeBiblioteca=event.getEstadoDeBiblioteca();
+            biblioteca.bibliotecaFacultad =new BibliotecaFacultad(
+                    new BibliotecaFacultadId(),
+                    event.getNombreBiblioteca(),
+                    event.getFacultad());
+            biblioteca.bibliotecario=new Bibliotecario(
+                    new BibliotecarioId(),
+                    event.getNombrebibliotecario());
+            biblioteca.horario=new Horario(
+                    new HorarioId(),
+                    event.getHorarioInicio(),
+                    event.getHorarioFin()
+            );
+
+
 
         });
         apply((BibliotecaFacultadAgregado event)->{
-            biblioteca.bibiotecaFacultad=new BibliotecaFacultad(
+            biblioteca.bibliotecaFacultad =new BibliotecaFacultad(
                     event.getBibliotecaFacultadId(),
                     event.getNombreBiblioteca(),
                     event.getFacultad()
@@ -31,6 +45,12 @@ public class BibliotecaChange extends EventChange {
                     event.getHorarioInicio(),
                     event.getHorarioFin()
             );
+        });
+        apply((EstadoDeBibliotecaActualizada event)->{
+            biblioteca.estadoDeBiblioteca=event.getEstadoDeBiblioteca();
+        });
+        apply((NombreDeBibliotecarioActualizado event)->{
+            biblioteca.bibliotecario.actualizarNombre(event.getNombre());
         });
     }
 }

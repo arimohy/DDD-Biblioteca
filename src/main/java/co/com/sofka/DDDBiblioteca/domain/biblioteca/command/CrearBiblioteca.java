@@ -1,29 +1,33 @@
-package co.com.sofka.DDDBiblioteca.domain.biblioteca.events;
+package co.com.sofka.DDDBiblioteca.domain.biblioteca.command;
 
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.EstadoDeBiblioteca;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.HorarioFin;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.HorarioInicio;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.NombreBiblioteca;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.*;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Facultad;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Nombre;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class BibliotecaCreada extends DomainEvent {
+public class CrearBiblioteca extends Command {
+    private final BibliotecaId entityId;
     private final EstadoDeBiblioteca estadoDeBiblioteca;
     private final NombreBiblioteca nombreBiblioteca;
     private final Facultad facultad;
-    private final  Nombre nombrebibliotecario;
+    private final Nombre nombrebibliotecario;
     private final HorarioInicio horarioInicio;
     private final HorarioFin horarioFin;
-    public BibliotecaCreada(EstadoDeBiblioteca estadoDeBiblioteca, NombreBiblioteca nombreBiblioteca, Facultad facultad,
-                            Nombre nombrebibliotecario, HorarioInicio horarioInicio, HorarioFin horarioFin) {
-        super("sofka.biblioteca.bibliotecacreada");
-        this.estadoDeBiblioteca=estadoDeBiblioteca;
+
+    public CrearBiblioteca(BibliotecaId entityId, EstadoDeBiblioteca estadoDeBiblioteca,
+                           NombreBiblioteca nombreBiblioteca, Facultad facultad,
+                           Nombre nombrebibliotecario, HorarioInicio horarioInicio, HorarioFin horarioFin) {
+        this.entityId = entityId;
+        this.estadoDeBiblioteca = estadoDeBiblioteca;
         this.nombreBiblioteca = nombreBiblioteca;
         this.facultad = facultad;
         this.nombrebibliotecario = nombrebibliotecario;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
+    }
+
+    public BibliotecaId getEntityId() {
+        return entityId;
     }
 
     public EstadoDeBiblioteca getEstadoDeBiblioteca() {

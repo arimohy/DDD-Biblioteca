@@ -1,15 +1,9 @@
 package co.com.sofka.DDDBiblioteca.domain.biblioteca;
 
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaCreada;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaFacultadAgregado;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecarioAgregado;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.HorarioAgregado;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.*;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.*;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Facultad;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Nombre;
-import co.com.sofka.DDDBiblioteca.domain.libro.events.AutorAgregado;
-import co.com.sofka.DDDBiblioteca.domain.libro.values.AutorId;
-import co.com.sofka.DDDBiblioteca.domain.libro.values.Nacionalidad;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
@@ -17,15 +11,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Biblioteca extends AggregateEvent<BibliotecaId> {
-    protected BibliotecaFacultad bibiotecaFacultad;
+    protected BibliotecaFacultad bibliotecaFacultad;
     protected Bibliotecario bibliotecario;
     protected Horario horario;
     protected EstadoDeBiblioteca estadoDeBiblioteca;
 
 
-    public Biblioteca(BibliotecaId entityId,EstadoDeBiblioteca estadoDeBiblioteca) {
+    public Biblioteca(BibliotecaId entityId,EstadoDeBiblioteca estadoDeBiblioteca,
+                      NombreBiblioteca nombreBiblioteca, Facultad facultad,
+                      Nombre nombrebibliotecario,
+                      HorarioInicio horarioInicio, HorarioFin horarioFin) {
         super(entityId);
-        appendChange(new BibliotecaCreada(estadoDeBiblioteca)).apply();
+        appendChange(new BibliotecaCreada(estadoDeBiblioteca, nombreBiblioteca, facultad, nombrebibliotecario, horarioInicio, horarioFin)).apply();
     }
     private Biblioteca(BibliotecaId entityId){
         super(entityId);
@@ -53,5 +50,26 @@ public class Biblioteca extends AggregateEvent<BibliotecaId> {
         Objects.requireNonNull(horarioFin);
         appendChange(new HorarioAgregado(entityId,horarioInicio,horarioFin)).apply();
     }
+    public void actualizarEstadoDeBiblioteca(EstadoDeBiblioteca estadoDeBiblioteca){
+        appendChange(new EstadoDeBibliotecaActualizada(estadoDeBiblioteca));
+    }
+    public void actualizarNombreDeBibliotecario(BibliotecaId entityId,Nombre nombre){
+        appendChange(new NombreDeBibliotecarioActualizado(entityId,nombre)).apply();
+    }
 
+    public BibliotecaFacultad bibliotecaFacultad() {
+        return bibliotecaFacultad;
+    }
+
+    public Bibliotecario bibliotecario() {
+        return bibliotecario;
+    }
+
+    public Horario horario() {
+        return horario;
+    }
+
+    public EstadoDeBiblioteca estadoDeBiblioteca() {
+        return estadoDeBiblioteca;
+    }
 }
