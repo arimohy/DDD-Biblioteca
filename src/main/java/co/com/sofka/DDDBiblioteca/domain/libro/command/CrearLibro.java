@@ -1,7 +1,7 @@
 package co.com.sofka.DDDBiblioteca.domain.libro.command;
 
 import co.com.sofka.DDDBiblioteca.domain.libro.values.AutorId;
-import co.com.sofka.DDDBiblioteca.domain.libro.values.Año;
+import co.com.sofka.DDDBiblioteca.domain.libro.values.Anio;
 import co.com.sofka.DDDBiblioteca.domain.libro.values.LibroId;
 import co.com.sofka.DDDBiblioteca.domain.libro.values.Titulo;
 import co.com.sofka.domain.generic.Command;
@@ -10,13 +10,13 @@ public class CrearLibro extends Command {
     private final AutorId autorId;
     private final LibroId entityId;
     private final Titulo titulo;
-    private final Año año;
+    private final Anio anio;
 
-    public CrearLibro(AutorId autorId, LibroId entityId, Titulo titulo, Año año) {
+    public CrearLibro(AutorId autorId, LibroId entityId, Titulo titulo, Anio anio) {
         this.autorId = autorId;
         this.entityId = entityId;
         this.titulo = titulo;
-        this.año = año;
+        this.anio = anio;
     }
 
     public AutorId getAutorId() {
@@ -31,7 +31,7 @@ public class CrearLibro extends Command {
         return titulo;
     }
 
-    public Año getAño() {
-        return año;
+    public Anio getAño() {
+        return anio;
     }
 }

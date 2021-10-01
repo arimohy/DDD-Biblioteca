@@ -20,11 +20,11 @@ public class Libro  extends AggregateEvent<LibroId> {
     protected Set<Tema> temas;
     protected Set<Ejemplar> ejemplares;
     protected Titulo titulo;
-    protected Año anio;
+    protected Anio anio;
 
-    public Libro(LibroId entityId, Titulo titulo, Año año) {
+    public Libro(LibroId entityId, Titulo titulo, Anio anio) {
         super(entityId);
-        appendChange(new LibroCreado(titulo,año)).apply();
+        appendChange(new LibroCreado(titulo, anio)).apply();
     }
     private Libro(LibroId entityId){
         super(entityId);
@@ -87,7 +87,7 @@ public class Libro  extends AggregateEvent<LibroId> {
         return titulo;
     }
 
-    public Año año() {
+    public Anio año() {
         return anio;
     }
 }
