@@ -12,7 +12,7 @@ public class BibliotecaCreada extends DomainEvent {
     private final EstadoDeBiblioteca estadoDeBiblioteca;
     private final NombreBiblioteca nombreBiblioteca;
     private final Facultad facultad;
-    private final  Nombre nombrebibliotecario;
+    private final Nombre nombrebibliotecario;
     private final HorarioInicio horarioInicio;
     private final HorarioFin horarioFin;
     public BibliotecaCreada(EstadoDeBiblioteca estadoDeBiblioteca, NombreBiblioteca nombreBiblioteca, Facultad facultad,

@@ -72,4 +72,8 @@ public class Biblioteca extends AggregateEvent<BibliotecaId> {
     public EstadoDeBiblioteca estadoDeBiblioteca() {
         return estadoDeBiblioteca;
     }
+
+    public void enviarAlerta(String mensaje) {
+        appendChange(new MensajeEnviado(mensaje)).apply();
+    }
 }

@@ -20,10 +20,7 @@ public class BibliotecaChange extends EventChange {
             biblioteca.horario=new Horario(
                     new HorarioId(),
                     event.getHorarioInicio(),
-                    event.getHorarioFin()
-            );
-
-
+                    event.getHorarioFin());
 
         });
         apply((BibliotecaFacultadAgregado event)->{
