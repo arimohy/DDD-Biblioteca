@@ -1,14 +1,10 @@
-package co.com.sofka.DDDBiblioteca.usecase;
+package co.com.sofka.DDDBiblioteca.usecase.biblioteca;
 
 
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaCreada;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.MensajeEnviado;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.EstadoDeBiblioteca;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.HorarioFin;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.HorarioInicio;
-import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.NombreBiblioteca;
-import co.com.sofka.DDDBiblioteca.domain.generics.values.Facultad;
-import co.com.sofka.DDDBiblioteca.domain.generics.values.Nombre;
+
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.TriggeredEvent;
@@ -34,12 +30,7 @@ class AlertaPorEstadoInacticoDeBibliotecaUseCaseTest {
         var aggregateId="xxx-xxx";
         //arrange
         var event =new BibliotecaCreada(
-                new EstadoDeBiblioteca("Inactivo"),
-                new NombreBiblioteca("BibliotecaYhomira"),
-                new Facultad("yhomira"),
-                new Nombre("LALA"),
-                new HorarioInicio("5am"),
-                new HorarioFin("8pm")
+                new EstadoDeBiblioteca("Inactivo")
         );
         event.setAggregateRootId(aggregateId);
         var useCase=new AlertaPorEstadoInacticoDeBibliotecaUseCase();
@@ -59,12 +50,7 @@ class AlertaPorEstadoInacticoDeBibliotecaUseCaseTest {
 
     private List<DomainEvent> eventStored() {
         var event =new BibliotecaCreada(
-                new EstadoDeBiblioteca("Inactivo"),
-                new NombreBiblioteca("BibliotecaYhomira"),
-                new Facultad("yhomira"),
-                new Nombre("LALA"),
-                new HorarioInicio("5am"),
-                new HorarioFin("8pm")
+                new EstadoDeBiblioteca("Inactivo")
         );
         return  List.of(event);
     }

@@ -10,7 +10,7 @@ import co.com.sofka.DDDBiblioteca.domain.prestamo.values.Observacion;
 import co.com.sofka.DDDBiblioteca.domain.prestamo.values.PrestamoId;
 import co.com.sofka.domain.generic.Command;
 
-public class crearprestamo extends Command {
+public class CrearPrestamo extends Command {
     private final PrestamoId entityId;
     private final BibliotecaId bibliotecaId;
     private final LibroId libroId;
@@ -20,7 +20,7 @@ public class crearprestamo extends Command {
     private final Nombre nombre;
     private final Facultad facultad;
 
-    public crearprestamo(PrestamoId entityId, BibliotecaId bibliotecaId, LibroId libroId, Fecha fecha, Observacion observacion, DiasDePrestamo diasDePrestamo, Nombre nombre, Facultad facultad) {
+    public CrearPrestamo(PrestamoId entityId, BibliotecaId bibliotecaId, LibroId libroId, Fecha fecha, Observacion observacion, DiasDePrestamo diasDePrestamo, Nombre nombre, Facultad facultad) {
         this.entityId = entityId;
         this.bibliotecaId = bibliotecaId;
         this.libroId = libroId;

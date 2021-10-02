@@ -6,7 +6,7 @@ public class EjemplarId extends Identity {
     public EjemplarId(){
 
     }
-    private  EjemplarId(String id){
+    public EjemplarId(String id){
         super(id);
     }
     public static EjemplarId of(String id){

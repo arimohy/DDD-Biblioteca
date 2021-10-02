@@ -1,4 +1,4 @@
-package co.com.sofka.DDDBiblioteca.usecase;
+package co.com.sofka.DDDBiblioteca.usecase.biblioteca;
 
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.Biblioteca;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.command.CrearBiblioteca;
@@ -16,12 +16,7 @@ public class CrearBibliotecaUsecase extends UseCase<RequestCommand<CrearBibliote
 
         var biblioteca=new Biblioteca(
                 command.getEntityId(),
-                command.getEstadoDeBiblioteca(),
-                command.getNombreBiblioteca(),
-                command.getFacultad(),
-                command.getNombrebibliotecario(),
-                command.getHorarioInicio(),
-                command.getHorarioFin()
+                command.getEstadoDeBiblioteca()
         );
 
         emit().onResponse(new ResponseEvents(biblioteca.getUncommittedChanges()));

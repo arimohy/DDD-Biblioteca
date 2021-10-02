@@ -1,4 +1,4 @@
-package co.com.sofka.DDDBiblioteca.usecase;
+package co.com.sofka.DDDBiblioteca.usecase.biblioteca;
 
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.MensajeEnviado;
 import co.com.sofka.business.generic.BusinessException;

@@ -7,7 +7,7 @@ public class TemaId extends Identity {
     public TemaId(){
 
     }
-    private  TemaId(String id){
+    public TemaId(String id){
         super(id);
     }
     public static TemaId of(String id){

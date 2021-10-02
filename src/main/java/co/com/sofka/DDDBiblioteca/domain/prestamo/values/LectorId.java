@@ -6,7 +6,7 @@ public class LectorId extends Identity {
     public LectorId(){
 
     }
-    private  LectorId(String id){
+    public LectorId(String id){
         super(id);
     }
     public static LectorId of(String id){

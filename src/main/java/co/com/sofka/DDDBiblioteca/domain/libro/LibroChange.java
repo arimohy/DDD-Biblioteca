@@ -17,7 +17,7 @@ public class LibroChange extends EventChange {
             libro.temas=new HashSet<>();
             libro.ejemplares=new HashSet<>();
             libro.titulo=event.getTitulo();
-            libro.anio=event.getAño();
+            libro.anio=event.getAnio();
 
         });
         apply((TemaAgregado event)->{

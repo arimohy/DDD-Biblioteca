@@ -8,7 +8,7 @@ public class HorarioId extends Identity {
     public HorarioId(){
 
     }
-    private  HorarioId(String id){
+    public HorarioId(String id){
         super(id);
     }
     public static HorarioId of(String id){

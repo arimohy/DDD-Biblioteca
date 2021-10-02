@@ -6,13 +6,13 @@ import co.com.sofka.DDDBiblioteca.domain.prestamo.values.LectorId;
 import co.com.sofka.DDDBiblioteca.domain.prestamo.values.PrestamoId;
 import co.com.sofka.domain.generic.Command;
 
-public class agregarLector extends Command {
+public class AgregarLector extends Command {
     private final PrestamoId prestamoId;
     private final LectorId entityId;
     private final Nombre nombre;
     private final Facultad facultad;
 
-    public agregarLector(PrestamoId prestamoId, LectorId entityId, Nombre nombre, Facultad facultad) {
+    public AgregarLector(PrestamoId prestamoId, LectorId entityId, Nombre nombre, Facultad facultad) {
         this.prestamoId = prestamoId;
         this.entityId = entityId;
         this.nombre = nombre;

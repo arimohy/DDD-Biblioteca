@@ -9,20 +9,7 @@ import co.com.sofka.domain.generic.EventChange;
 public class BibliotecaChange extends EventChange {
     public BibliotecaChange(Biblioteca biblioteca) {
         apply((BibliotecaCreada event)->{
-            biblioteca.estadoDeBiblioteca=event.getEstadoDeBiblioteca();
-            biblioteca.bibliotecaFacultad =new BibliotecaFacultad(
-                    new BibliotecaFacultadId(),
-                    event.getNombreBiblioteca(),
-                    event.getFacultad());
-            biblioteca.bibliotecario=new Bibliotecario(
-                    new BibliotecarioId(),
-                    event.getNombrebibliotecario());
-            biblioteca.horario=new Horario(
-                    new HorarioId(),
-                    event.getHorarioInicio(),
-                    event.getHorarioFin());
-
-        });
+            biblioteca.estadoDeBiblioteca=event.getEstadoDeBiblioteca();});
         apply((BibliotecaFacultadAgregado event)->{
             biblioteca.bibliotecaFacultad =new BibliotecaFacultad(
                     event.getBibliotecaFacultadId(),

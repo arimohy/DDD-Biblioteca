@@ -17,7 +17,7 @@ public class LibroCreado extends DomainEvent {
         return titulo;
     }
 
-    public Anio getAño() {
+    public Anio getAnio() {
         return anio;
     }
 }

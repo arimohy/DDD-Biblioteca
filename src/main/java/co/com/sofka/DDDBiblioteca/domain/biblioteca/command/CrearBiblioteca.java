@@ -8,22 +8,10 @@ import co.com.sofka.domain.generic.Command;
 public class CrearBiblioteca extends Command {
     private final BibliotecaId entityId;
     private final EstadoDeBiblioteca estadoDeBiblioteca;
-    private final NombreBiblioteca nombreBiblioteca;
-    private final Facultad facultad;
-    private final Nombre nombrebibliotecario;
-    private final HorarioInicio horarioInicio;
-    private final HorarioFin horarioFin;
 
-    public CrearBiblioteca(BibliotecaId entityId, EstadoDeBiblioteca estadoDeBiblioteca,
-                           NombreBiblioteca nombreBiblioteca, Facultad facultad,
-                           Nombre nombrebibliotecario, HorarioInicio horarioInicio, HorarioFin horarioFin) {
+    public CrearBiblioteca(BibliotecaId entityId, EstadoDeBiblioteca estadoDeBiblioteca) {
         this.entityId = entityId;
         this.estadoDeBiblioteca = estadoDeBiblioteca;
-        this.nombreBiblioteca = nombreBiblioteca;
-        this.facultad = facultad;
-        this.nombrebibliotecario = nombrebibliotecario;
-        this.horarioInicio = horarioInicio;
-        this.horarioFin = horarioFin;
     }
 
     public BibliotecaId getEntityId() {
@@ -34,23 +22,4 @@ public class CrearBiblioteca extends Command {
         return estadoDeBiblioteca;
     }
 
-    public NombreBiblioteca getNombreBiblioteca() {
-        return nombreBiblioteca;
-    }
-
-    public Facultad getFacultad() {
-        return facultad;
-    }
-
-    public Nombre getNombrebibliotecario() {
-        return nombrebibliotecario;
-    }
-
-    public HorarioInicio getHorarioInicio() {
-        return horarioInicio;
-    }
-
-    public HorarioFin getHorarioFin() {
-        return horarioFin;
-    }
 }

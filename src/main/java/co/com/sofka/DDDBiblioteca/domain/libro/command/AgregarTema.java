@@ -1,22 +1,24 @@
 package co.com.sofka.DDDBiblioteca.domain.libro.command;
 
 import co.com.sofka.DDDBiblioteca.domain.libro.values.AutorId;
+import co.com.sofka.DDDBiblioteca.domain.libro.values.LibroId;
 import co.com.sofka.DDDBiblioteca.domain.libro.values.TemaId;
 import co.com.sofka.DDDBiblioteca.domain.libro.values.TemaPrincipal;
+import co.com.sofka.domain.generic.Command;
 
-public class AgregarTema {
-    private final AutorId autorId;
+public class AgregarTema extends Command {
+    private final LibroId libroId;
     private final TemaId entityId;
     private final TemaPrincipal temaPrincipal;
 
-    public AgregarTema(AutorId autorId, TemaId entityId, TemaPrincipal temaPrincipal) {
-        this.autorId = autorId;
+    public AgregarTema(LibroId libroId, TemaId entityId, TemaPrincipal temaPrincipal) {
+        this.libroId = libroId;
         this.entityId = entityId;
         this.temaPrincipal = temaPrincipal;
     }
 
-    public AutorId getAutorId() {
-        return autorId;
+    public LibroId getLibroId() {
+        return libroId;
     }
 
     public TemaId getEntityId() {

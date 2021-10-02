@@ -6,7 +6,7 @@ public class AutorId extends Identity {
     public AutorId(){
 
     }
-    private  AutorId(String id){
+    public AutorId(String id){
         super(id);
     }
     public static AutorId of(String id){

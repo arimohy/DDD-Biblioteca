@@ -17,12 +17,9 @@ public class Biblioteca extends AggregateEvent<BibliotecaId> {
     protected EstadoDeBiblioteca estadoDeBiblioteca;
 
 
-    public Biblioteca(BibliotecaId entityId,EstadoDeBiblioteca estadoDeBiblioteca,
-                      NombreBiblioteca nombreBiblioteca, Facultad facultad,
-                      Nombre nombrebibliotecario,
-                      HorarioInicio horarioInicio, HorarioFin horarioFin) {
+    public Biblioteca(BibliotecaId entityId,EstadoDeBiblioteca estadoDeBiblioteca) {
         super(entityId);
-        appendChange(new BibliotecaCreada(estadoDeBiblioteca, nombreBiblioteca, facultad, nombrebibliotecario, horarioInicio, horarioFin)).apply();
+        appendChange(new BibliotecaCreada(estadoDeBiblioteca)).apply();
     }
     private Biblioteca(BibliotecaId entityId){
         super(entityId);

@@ -3,8 +3,9 @@ package co.com.sofka.DDDBiblioteca.domain.biblioteca.command;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecaId;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecarioId;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Nombre;
+import co.com.sofka.domain.generic.Command;
 
-public class AgregarBibliotecario {
+public class AgregarBibliotecario extends Command {
     private final BibliotecaId bibliotecaId;
     private final BibliotecarioId entityId;
     private final Nombre nombre;

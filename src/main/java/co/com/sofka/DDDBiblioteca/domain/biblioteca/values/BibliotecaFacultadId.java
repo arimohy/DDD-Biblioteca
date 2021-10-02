@@ -6,7 +6,7 @@ public class BibliotecaFacultadId extends Identity {
     public BibliotecaFacultadId(){
 
     }
-    private  BibliotecaFacultadId(String id){
+    public BibliotecaFacultadId(String id){
         super(id);
     }
     public static BibliotecaFacultadId of(String id){
