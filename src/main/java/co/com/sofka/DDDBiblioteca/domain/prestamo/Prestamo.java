@@ -4,6 +4,7 @@ import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecaId;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Facultad;
 import co.com.sofka.DDDBiblioteca.domain.generics.values.Nombre;
 import co.com.sofka.DDDBiblioteca.domain.libro.values.LibroId;
+import co.com.sofka.DDDBiblioteca.domain.prestamo.events.ObservacionModificada;
 import co.com.sofka.DDDBiblioteca.domain.prestamo.events.BibliotecaAsociada;
 import co.com.sofka.DDDBiblioteca.domain.prestamo.events.LectorAgregado;
 import co.com.sofka.DDDBiblioteca.domain.prestamo.events.PrestamoCreado;
@@ -50,7 +51,9 @@ public class Prestamo extends AggregateEvent<PrestamoId> {
     public void AsociarLibro(LibroId libroId){
         appendChange(new LibroAsociado(libroId)).apply();
     }
-
+    public void modificarObservacion(String mensaje) {
+        appendChange(new ObservacionModificada(mensaje)).apply();
+    }
     public Lector lector() {
         return lector;
     }
@@ -74,4 +77,6 @@ public class Prestamo extends AggregateEvent<PrestamoId> {
     public DiasDePrestamo diasDePrestamo() {
         return diasDePrestamo;
     }
+
+
 }

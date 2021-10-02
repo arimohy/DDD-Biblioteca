@@ -1,8 +1,10 @@
 package co.com.sofka.DDDBiblioteca.usecase.biblioteca;
 
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.command.ActualizarNombreBibliotecario;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.command.AgregarBibliotecario;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecaCreada;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.BibliotecarioAgregado;
+import co.com.sofka.DDDBiblioteca.domain.biblioteca.events.NombreDeBibliotecarioActualizado;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecaId;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.BibliotecarioId;
 import co.com.sofka.DDDBiblioteca.domain.biblioteca.values.EstadoDeBiblioteca;
@@ -22,8 +24,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class AgregarBibliotecarioUseCaseTest {
+class ActualizarNombreBibliotecarioUseCaseTest {
     private static final String idbibliotecario = "bibliotecario1";
+    private static final String idbiblioteca = "biblioteca1";
     @Mock
     private DomainEventRepository repository;
 
@@ -31,31 +34,37 @@ class AgregarBibliotecarioUseCaseTest {
     @DisplayName("test agregar un blibliotecario en un biblioteca")
     void agregarBibliotecarioEnBiblioteca() {
         //arrange
-        var command = new AgregarBibliotecario(BibliotecaId.of("xxxxx"),
-                new BibliotecarioId(idbibliotecario),
-                new Nombre("Yhomira")
+        var command = new ActualizarNombreBibliotecario(
+                BibliotecaId.of(idbiblioteca),
+                new Nombre("alexandra")
         );
-        var useCase = new AgregarBibliotecarioUseCase();
-        Mockito.when(repository.getEventsBy(idbibliotecario)).thenReturn(EventStored());
+        var useCase = new ActualizarNombreBibliotecarioUseCase();
+        Mockito.when(repository.getEventsBy(idbiblioteca)).thenReturn(EventStored());
         useCase.addRepository(repository);
 
         //act
         var events = UseCaseHandler.getInstance()
-                .setIdentifyExecutor(idbibliotecario)
+                .setIdentifyExecutor(idbiblioteca)
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
         //assert
-        var eventBibliotecarioAgregado = (BibliotecarioAgregado) events.get(0);
-        Assertions.assertEquals("Yhomira", eventBibliotecarioAgregado.getNombre().value());
-        Mockito.verify(repository).getEventsBy(idbibliotecario);
+        var eventClienteActualizado = (NombreDeBibliotecarioActualizado) events.get(0);
+        Assertions.assertEquals("alexandra", eventClienteActualizado.getNombre().value());
+
+        Mockito.verify(repository).getEventsBy(idbiblioteca);
     }
+
 
     private List<DomainEvent> EventStored() {
         return List.of(
                 new BibliotecaCreada(
                         new EstadoDeBiblioteca("Activo")
+                ),
+                new BibliotecarioAgregado(
+                        new BibliotecarioId(idbibliotecario),
+                        new Nombre("yhomira")
                 )
         );
     }

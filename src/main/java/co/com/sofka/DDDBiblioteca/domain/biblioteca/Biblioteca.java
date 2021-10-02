@@ -50,8 +50,11 @@ public class Biblioteca extends AggregateEvent<BibliotecaId> {
     public void actualizarEstadoDeBiblioteca(EstadoDeBiblioteca estadoDeBiblioteca){
         appendChange(new EstadoDeBibliotecaActualizada(estadoDeBiblioteca));
     }
-    public void actualizarNombreDeBibliotecario(BibliotecaId entityId,Nombre nombre){
-        appendChange(new NombreDeBibliotecarioActualizado(entityId,nombre)).apply();
+    public void actualizarNombreDeBibliotecario(Nombre nombre){
+        appendChange(new NombreDeBibliotecarioActualizado(nombre)).apply();
+    }
+    public void enviarAlerta(String mensaje) {
+        appendChange(new MensajeEnviado(mensaje)).apply();
     }
 
     public BibliotecaFacultad bibliotecaFacultad() {
@@ -70,7 +73,5 @@ public class Biblioteca extends AggregateEvent<BibliotecaId> {
         return estadoDeBiblioteca;
     }
 
-    public void enviarAlerta(String mensaje) {
-        appendChange(new MensajeEnviado(mensaje)).apply();
-    }
+
 }
